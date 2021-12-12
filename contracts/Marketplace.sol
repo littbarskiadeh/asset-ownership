@@ -26,7 +26,12 @@ contract Marketplace {
 
         address tokenAddress = address(token);
 
-        Listing memory newAsset = Listing(name, tokenAddress, msg.sender, supply);
+        Listing memory newAsset = Listing(
+            name,
+            tokenAddress,
+            msg.sender,
+            supply
+        );
         listedAssets.push(newAsset);
 
         emit AssetAdded(name, tokenAddress, supply);
@@ -40,6 +45,4 @@ contract Marketplace {
     // TODO:
     // 1. Add function to transfer coins to 'Buyer' whenever an Asset is 'Purchased'
     // 2.
-
-
 }
