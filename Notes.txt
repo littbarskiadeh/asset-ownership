@@ -1,0 +1,7 @@
+Use Delegate Calls
+
+
+- Deploy Child contract once
+    Subsequent children are 'Cloned' using the CloneFactory createClone function (see the code)
+    This is to save gas on multiple deployment of Child contracts (if creating Child instances with 'new' keyword)
+    #Long story short, USING THE CloneFactory Library SAVES GAS
