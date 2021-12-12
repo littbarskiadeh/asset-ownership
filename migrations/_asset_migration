@@ -1,0 +1,6 @@
+const Asset = artifacts.require("Asset");
+
+//Starting with initial supply of 1000
+module.exports = function (deployer) {
+  deployer.deploy(Asset, "HOOD", "HOD",'0x42d65e2bF5D2E485D16889Bf6187D58d40429449', 1000);
+};

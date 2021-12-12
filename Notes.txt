@@ -5,3 +5,9 @@ Use Delegate Calls
     Subsequent children are 'Cloned' using the CloneFactory createClone function (see the code)
     This is to save gas on multiple deployment of Child contracts (if creating Child instances with 'new' keyword)
     #Long story short, USING THE CloneFactory Library SAVES GAS
+
+
+
+- Factory deployment 
+    https://ethereum.stackexchange.com/questions/91087/factory-pattern-migration-with-truffle
+    
