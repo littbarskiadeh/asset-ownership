@@ -6,3 +6,6 @@ Add Asset - URL http://localhost:9000/api/Asset/list
     "description": "This is the description of the Asset, could be address :D",
     "price": 400000
 }
+
+DELETE Asset - URL http://localhost:9000/api/Asset/delete/:id
+

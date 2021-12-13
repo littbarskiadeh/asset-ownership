@@ -11,7 +11,7 @@ function AssetController() {
   };
 
   const deleteAssets = function(req, res) {
-    Asset.delete(req.param.id).then(data => res.json(data));
+    Asset.delete(req.params.id).then(data => res.json(data));
   };
 
   // Add function to addAsset to blockchain
