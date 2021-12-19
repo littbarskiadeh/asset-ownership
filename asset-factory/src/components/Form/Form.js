@@ -8,17 +8,6 @@ export default function Form() {
     const [description, setDescription] = useState("");
     const [assetPrice, setAssetPrice] = useState(0);
 
-    /* 
-    http://localhost:8080/api/Asset/add
-    {
-        "name": "Asset 1",
-        "description": "This is the description of the Asset, could be address :D",
-        "price": 400000
-    }
-     */
-
-
-
     const handleSubmit = async (e) => {
         const requestOptions = {
             method: 'POST',

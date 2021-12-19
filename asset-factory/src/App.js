@@ -1,5 +1,6 @@
 import Login from './components/Login/Login';
 import Form from './components/Form/Form';
+import Assets from './components/Assets/Assets';
 
 import {
   BrowserRouter,
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/" exact  element={<Login />} />
         <Route path="/form" exact element={<Form />} />
+        <Route path="/assets" exact element={<Assets />} />
       </Routes>
     </BrowserRouter>
 
