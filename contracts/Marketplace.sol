@@ -17,24 +17,24 @@ contract Marketplace {
 
     // Create a token when a new asset is listed by a user
     function createAsset(
-        string memory name,
-        string memory symbol,
-        uint256 supply
+        string memory _name,
+        string memory _symbol,
+        uint256 _supply
     ) external returns (address) {
-        Asset token = new Asset(name, symbol, msg.sender, supply);
+        Asset token = new Asset(_name, _symbol, msg.sender, _supply);
         ////  NOTE: TotalSupply of tokens is minted to msg.sender i.e. address of the client calling this function
 
         address tokenAddress = address(token);
 
         Listing memory newAsset = Listing(
-            name,
+            _name,
             tokenAddress,
             msg.sender,
-            supply
+            _supply
         );
         listedAssets.push(newAsset);
 
-        emit AssetAdded(name, tokenAddress, supply);
+        emit AssetAdded(_name, tokenAddress, _supply);
         return tokenAddress;
     }
 
