@@ -22,7 +22,6 @@ return <Componenent />;
 export default function Login() {
 
     const { register, handleSubmit } = useForm();
-
     const onSubmit = data => console.log(data);
 
     return (
@@ -34,6 +33,5 @@ export default function Login() {
                 <input type="submit" />
             </form>
         </div>
-
     );
 }

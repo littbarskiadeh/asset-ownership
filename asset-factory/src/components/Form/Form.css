@@ -25,7 +25,7 @@ select, input[type="text"], .input-item {
 form input[type="button"] {
     margin-top: 2rem;
     padding: 0.4rem;
-    width: 100%;
+    width: 35%;
     background: linear-gradient(to left, #4776E6, #8e54e9);
     cursor: pointer;
     color: white;
@@ -33,9 +33,11 @@ form input[type="button"] {
     font-weight: 300;
     border-radius: 4px;
     transition: all 0.3s ease;
+    align-self: center;
 }
 
 form input[type="button"]:hover {
     letter-spacing: 0.5px;
     background: linear-gradient(to right, #4776E6, #8e54e9);
+    width: 50%;
 }

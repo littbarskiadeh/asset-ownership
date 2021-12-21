@@ -1,13 +1,40 @@
 const Asset = require("../services/AssetService");
+const { createAsset, getListing } = require('../db/EthConnection');
+
 
 function AssetController() {
-  const listAssets = function(req, res) {
-    Asset.list().then(data => res.json(data));
+  const listAssets = async function(req, res) {
+    // get listing from blockchain
+    const response = await getListing()   //Returns array of arrays of assets
+    /** 
+     * [
+      'Test Asset2',
+      '0xC10Bab0f0B1db1f18ddc82a0204F79B7176dD66c',
+      '0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1',
+      '1000',
+      name: 'Test Asset2',
+      tokenAddress: '0xC10Bab0f0B1db1f18ddc82a0204F79B7176dD66c',
+      ownerAddress: '0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1',
+      assetValue: '1000'
+    ]
+    */
+    console.log(response)
+    // Asset.list().then(data => res.json(data));  //Initial
+    Asset.list().then(() => res.json(response));
   };
 
-  const addAssets = function(req, res) {
-    Asset.add(req.body).then(data => res.json(data));
-    console.log("added asset to DB successfully");
+  // symbol=description
+  const addAssets = async function(req, res) {
+    console.log('add assets called ', req.body )
+    const {name, description,price} = req.body;
+    const response = await createAsset(name, description, price)
+    console.log(response);
+
+    // Add asset to DB if successfully added to Blockchain
+    if(response){
+      Asset.add(req.body).then(data => res.json(data));
+      console.log("added asset to DB successfully");
+    }
   };
 
   const deleteAssets = function(req, res) {
