@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const logger = require('../logger');
 
 const serverURI = process.env.DATABASE_URL || "mongodb://mongo/assetdb";
 
@@ -10,11 +11,12 @@ class DBConnection {
     mongoose
       .connect(serverURI, { useNewUrlParser: true })
       .then(() => {
-        console.log("Database connection successful");
+        // console.log("Database connection successful");
+        logger.info("Database connection successful");
       })
       .catch(err => {
-        console.error("Database connection error");
-        console.log( err);
+        logger.error("Database connection error");
+        logger.error( err);
       });
   }
 }

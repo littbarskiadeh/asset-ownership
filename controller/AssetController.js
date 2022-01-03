@@ -1,11 +1,11 @@
 const Asset = require("../services/AssetService");
 const { createAsset, getListing } = require('../db/EthConnection');
-
+const logger = require('../logger');
 
 function AssetController() {
   const listAssets = async function(req, res) {
     // get listing from blockchain
-    const response = await getListing()   //Returns array of arrays of assets
+    const response = await getListing()   //Returns an Array of [arrays of assets] from the blockchain
     /** 
      * [
       'Test Asset2',
@@ -19,21 +19,21 @@ function AssetController() {
     ]
     */
     console.log(response)
-    // Asset.list().then(data => res.json(data));  //Initial
-    Asset.list().then(() => res.json(response));
+    Asset.list().then(data => res.json(data));  //Initial
+    // Asset.list().then(() => res.json(response));
   };
 
   // symbol=description
   const addAssets = async function(req, res) {
-    console.log('add assets called ', req.body )
+    logger.info('add assets called ', req.body )
     const {name, description,price} = req.body;
     const response = await createAsset(name, description, price)
-    console.log(response);
+    logger.info('CreateAsset() blockchain response -->>> ', response);
 
     // Add asset to DB if successfully added to Blockchain
     if(response){
       Asset.add(req.body).then(data => res.json(data));
-      console.log("added asset to DB successfully");
+      logger.info("added asset to DB successfully");
     }
   };
 

@@ -12,14 +12,15 @@ contract Marketplace {
     }
 
     Listing[] public listedAssets;
+    address buyer; // buyer/investor of the asset
 
     event AssetAdded(string name, address tokenAddress, uint256 supply);
 
     // Create a token when a new asset is listed by a user
     function createAsset(
         string memory _name,
-        string memory _symbol,
-        uint256 _supply
+        string memory _symbol,     
+        uint256 _supply     // this is uint representation of the value of the asset
     ) external returns (address) {
         Asset token = new Asset(_name, _symbol, msg.sender, _supply);
         ////  NOTE: TotalSupply of tokens is minted to msg.sender i.e. address of the client calling this function
@@ -30,7 +31,7 @@ contract Marketplace {
             _name,
             tokenAddress,
             msg.sender,
-            _supply
+            _supply //should be == token.totalSupply();
         );
         listedAssets.push(newAsset);
 
