@@ -46,4 +46,8 @@ contract Marketplace {
     // TODO:
     // 1. Add function to transfer coins to 'Buyer' whenever an Asset is 'Purchased'
     // 2.
+
+    // function buyAsset(address _buyer, uint _amount) public returns (){
+
+    // }
 }
